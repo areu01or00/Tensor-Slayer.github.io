@@ -1,0 +1,37 @@
+title: "Tensor Slayer Research"
+description: "AI-Guided Model Enhancement Through Direct Tensor Manipulation"
+author: "AI Researcher"
+email: ""
+url: "https://areu01or00.github.io/Tensor-Slayer.github.io"
+baseurl: "/Tensor-Slayer.github.io"
+
+# Theme
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Social media (optional - can be left empty)
+github_username: areu01or00
+twitter_username: ""
+
+# Show excerpts on home page
+show_excerpts: true
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

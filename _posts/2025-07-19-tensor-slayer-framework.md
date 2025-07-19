@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Exploring Direct Tensor Manipulation in Language Models: A Case Study in Binary-Level Model Enhancement"
-date: 2024-07-19
+date: 2025-07-19
 categories: ai research tensor-manipulation
 author: "AI Researcher"
 excerpt: "An investigation into treating neural network weights as directly modifiable binary data, using AI-guided analysis to enhance a Qwen-0.6B model through 44 targeted modifications."

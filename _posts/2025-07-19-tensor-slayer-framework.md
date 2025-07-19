@@ -328,3 +328,5 @@ python safetensors_diff_analyzer.py compare Qwen_0.6B/model.safetensors Qwen_0.6
 ```
 
 The enhancement script automatically applies all 44 AI-recommended modifications and creates backups for easy restoration.
+
+## Evals : https://github.com/areu01or00/Tensor-Slayer/tree/main/Evals

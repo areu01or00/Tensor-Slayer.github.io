@@ -67,6 +67,9 @@ The AI system then analyzes this information and provides:
 
 ## Case Study: Qwen-0.6B Enhancement
 
+<img width="1000" height="600" alt="model_comparison_plot" src="https://github.com/user-attachments/assets/fc704156-6e0d-42ba-9d53-b492de346b67" />
+
+
 ### The Analysis Target
 
 I chose Qwen-0.6B for this investigation because:

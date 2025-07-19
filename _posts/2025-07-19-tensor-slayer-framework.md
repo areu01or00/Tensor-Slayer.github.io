@@ -308,12 +308,12 @@ All tools and code for this research are available at: [https://github.com/areu0
 To replicate the Qwen-0.6B enhancement:
 
 ```bash
-# Download the framework
-git clone https://github.com/areu01or00/Tensor-Slayer.github.io.git
-cd Tensor-Slayer.github.io
 
 # Download base model
 huggingface-cli download Qwen/Qwen-0.6B --local-dir ./Qwen_0.6B
+
+#Download the Qwen Hex patch
+https://github.com/areu01or00/Tensor-Slayer.github.io/blob/main/apply_qwen_patches_simple.sh
 
 # Apply AI-recommended enhancements
 cd Qwen_0.6B

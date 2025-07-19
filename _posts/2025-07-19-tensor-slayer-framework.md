@@ -306,7 +306,6 @@ The Tensor Slayer framework represents an early exploration of AI-guided model e
 
 ## Code and Replication
 
-All tools and code for this research are available at: [https://github.com/areu01or00/Tensor-Slayer.github.io](https://github.com/areu01or00/Tensor-Slayer.github.io)
 
 To replicate the Qwen-0.6B enhancement:
 

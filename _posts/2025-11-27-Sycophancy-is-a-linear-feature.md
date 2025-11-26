@@ -26,7 +26,7 @@ Recent work in mechanistic interpretability has demonstrated that many high-leve
 
 This investigation addresses three central questions. First, can we reliably detect when a model is producing a sycophantic response by examining its internal activations? Second, at which layers and token positions is this information most accessible? Third, can the learned detection direction be used to intervene on the model's behavior and reduce sycophancy?
 
-![Pipeline Overview](Data/qwen3_0.6b/plots/10_pipeline.png)
+![Pipeline Overview](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/10_pipeline.png)
 
 ## 2. Experiment Setup
 
@@ -50,11 +50,11 @@ For each extraction method and layer combination, trained a logistic regression 
 
 Probe accuracy varies substantially across layers, with middle-to-late layers showing the strongest sycophancy signal. The mean response extraction method achieved the highest overall accuracy of 73.5% at layer 15, compared to 68.5% for last response at layer 12 and 67.0% for last prompt at layer 23. These results significantly exceed the 50% baseline expected from random guessing.
 
-![Layer Heatmap](Data/qwen3_0.6b/plots/01_layer_heatmap.png)
+![Layer Heatmap](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/01_layer_heatmap.png)
 
 The smooth heatmap above visualizes probe accuracy across all layer and extraction method combinations. The emergence of sycophancy information in middle layers (around layers 12-16) aligns with prior findings that high-level semantic features tend to crystallize in intermediate transformer layers, while early layers process lower-level features and late layers focus on output formatting.
 
-![Layer Lines](Data/qwen3_0.6b/plots/02_layer_lines.png)
+![Layer Lines](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/02_layer_lines.png)
 
 The line plot provides a clearer view of how accuracy evolves across layers for each extraction method. Mean response consistently outperforms other methods in the critical middle layers, likely because averaging across all generated tokens captures more complete information about the model's behavior than any single token position.
 
@@ -62,29 +62,29 @@ The line plot provides a clearer view of how accuracy evolves across layers for 
 
 The superiority of mean response extraction has important implications for understanding how sycophancy manifests in model computations. Rather than being a property of a single decision point, sycophantic behavior appears to be distributed across the entire generation process. The model's hidden states throughout generation collectively encode whether it is producing an agreeable but incorrect response.
 
-![Detection Comparison](Data/qwen3_0.6b/plots/05_detection_bars.png)
+![Detection Comparison](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/05_detection_bars.png)
 
-![Method Comparison](Data/qwen3_0.6b/plots/20_method_comparison.png)
+![Method Comparison](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/20_method_comparison.png)
 
 ### 3.3 Individual Layer Heatmaps
 
 Breaking down the results by extraction method reveals distinct layer-wise patterns. Last prompt accuracy peaks at later layers (L23), which makes sense as the model must propagate question understanding deeper into the network before the sycophancy-relevant computation occurs. Last response and mean response both peak earlier (L12 and L15 respectively), suggesting that by the time generation is complete, the relevant information has already been processed and is most accessible in middle layers.
 
-![Method Heatmaps](Data/qwen3_0.6b/plots/08_method_heatmaps.png)
+![Method Heatmaps](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/08_method_heatmaps.png)
 
 ### 3.4 Train vs Test Performance
 
 The gap between training and test accuracy remains modest (typically 2-5 percentage points), indicating that the trained probes are learning generalizable features rather than overfitting to idiosyncratic patterns in the training data. This generalization is crucial for the validity of any intervention based on the learned direction.
 
-![Train vs Test](Data/qwen3_0.6b/plots/06_train_vs_test.png)
+![Train vs Test](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/06_train_vs_test.png)
 
 ### 3.5 Classification Metrics
 
 Beyond raw accuracy, evaluated the probe performance using ROC and precision-recall curves on the 20% held-out test split (approximately 200 examples). The probe achieves an AUC of approximately 0.81, indicating strong discriminative ability between sycophantic and non-sycophantic responses. The precision-recall curve shows that we can achieve high precision at moderate recall levels, which is valuable for applications where false positives are costly.
 
-![ROC and PR Curves](Data/qwen3_0.6b/plots/21_roc_pr_curves.png)
+![ROC and PR Curves](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/21_roc_pr_curves.png)
 
-![Confusion Matrix](Data/qwen3_0.6b/plots/22_confusion_matrix.png)
+![Confusion Matrix](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/22_confusion_matrix.png)
 
 ## 4. Representation Analysis
 
@@ -92,25 +92,25 @@ Beyond raw accuracy, evaluated the probe performance using ROC and precision-rec
 
 To understand the geometric structure of sycophancy in activation space,projected hidden states onto their principal components. The PCA visualization reveals partial but imperfect separability between sycophantic and non-sycophantic responses, consistent with the probe accuracy of 73.5%—better than chance but far from perfect classification.
 
-![PCA Visualization](Data/qwen3_0.6b/plots/15_pca_visualization.png)
+![PCA Visualization](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/15_pca_visualization.png)
 
 ### 4.2 t-SNE Visualization
 
 The t-SNE projection provides a nonlinear view of the representation space, showing that while the two classes form somewhat distinct clusters, there is substantial overlap. This overlap explains both why linear probes achieve above-chance accuracy (the classes are partially separable) and why accuracy does not approach 100%.
 
-![t-SNE Visualization](Data/qwen3_0.6b/plots/16_tsne_visualization.png)
+![t-SNE Visualization](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/16_tsne_visualization.png)
 
 ### 4.3 Layer Progression
 
 Visualizing PCA projections across multiple layers reveals how the representation evolves through the network. In early layers (0-4), the two classes are largely intermixed. Separation begins emerging around layer 8 and becomes most pronounced in layers 12-16. By layer 28, some separation remains but the geometry has shifted as the model prepares for output generation.
 
-![Layer Progression](Data/qwen3_0.6b/plots/19_layer_progression.png)
+![Layer Progression](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/19_layer_progression.png)
 
 ### 4.4 Confidence Analysis
 
 Examining the probe's confidence on correct versus incorrect predictions reveals that the classifier is appropriately calibrated—it tends to be more confident when correct and less confident when incorrect. The probability distributions for sycophantic versus non-sycophantic samples show clear separation around the 0.5 decision threshold.
 
-![Confidence Distribution](Data/qwen3_0.6b/plots/18_confidence_distribution.png)
+![Confidence Distribution](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/18_confidence_distribution.png)
 
 ## 5. Circuit Analysis
 
@@ -118,37 +118,37 @@ Examining the probe's confidence on correct versus incorrect predictions reveals
 
 Training a sparse probe with L1 regularization identifies which neurons carry the most sycophancy-relevant information. Out of 1024 neurons in the hidden state, only 180 (17.6%) receive non-zero weights in the sparse probe, and the top 20 neurons account for the majority of the signal. This sparsity suggests that sycophancy is encoded in a relatively localized subspace rather than being distributed uniformly across all neurons.
 
-![Weight Distribution](Data/qwen3_0.6b/plots/12_weight_distribution.png)
+![Weight Distribution](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/12_weight_distribution.png)
 
 ### 5.2 Pro-Sycophancy and Anti-Sycophancy Neurons
 
 The sparse probe weights reveal two distinct populations of neurons. Neurons with large positive weights activate more strongly during sycophantic responses and can be interpreted as "pro-sycophancy" features. Neurons with large negative weights show the opposite pattern, activating more strongly during honest responses and serving as "anti-sycophancy" features.
 
-![Top Neurons](Data/qwen3_0.6b/plots/07_neurons.png)
+![Top Neurons](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/07_neurons.png)
 
 ### 5.3 Neuron Activation Distributions
 
 Examining the activation distributions of top neurons confirms that they genuinely discriminate between sycophantic and non-sycophantic responses. For pro-sycophancy neurons, the sycophantic response distribution is shifted toward higher activations. For anti-sycophancy neurons, this pattern reverses.
 
-![Neuron Activations](Data/qwen3_0.6b/plots/11_neuron_activations.png)
+![Neuron Activations](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/11_neuron_activations.png)
 
 ### 5.4 Layer-Neuron Correlation
 
 Computing the correlation between each top neuron's activation and sycophancy labels across all layers reveals that different neurons become informative at different depths. Some neurons show strong correlations only in middle layers, while others maintain their predictive power across a broader range. This suggests a distributed circuit where different components contribute at different stages of processing.
 
-![Layer-Neuron Heatmap](Data/qwen3_0.6b/plots/13_layer_neuron_heatmap.png)
+![Layer-Neuron Heatmap](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/13_layer_neuron_heatmap.png)
 
 ### 5.5 Circuit Diagram
 
 Synthesizing these findings, we can sketch a simplified circuit diagram showing how information flows from the hidden state through key neurons to produce the sycophancy prediction. The learned probe weights define a direction in activation space that separates sycophantic from non-sycophantic responses, with pro-sycophancy neurons contributing positively and anti-sycophancy neurons contributing negatively to the final score.
 
-![Circuit Diagram](Data/qwen3_0.6b/plots/14_circuit_diagram.png)
+![Circuit Diagram](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/14_circuit_diagram.png)
 
 ### 5.6 Learned Steering Vector
 
 The probe's weight vector defines the "sycophancy direction" in the model's representation space. This 1024-dimensional vector can be visualized directly, showing which neurons contribute most strongly (in either direction) to the classification decision.
 
-![Probe Direction](Data/qwen3_0.6b/plots/17_probe_direction.png)
+![Probe Direction](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/17_probe_direction.png)
 
 ## 6. Intervention Experiment
 
@@ -160,13 +160,13 @@ Having identified a linear direction corresponding to sycophancy, investigated w
 
 Evaluated intervention effectiveness on 80 sycophantic examples from the same 20% held-out test split used for detection metrics (not a separate evaluation set). Performed a grid search over α ∈ {0, 10, 20, 30, 40, 50, 75, 100}, applying the same global α to all examples in a single run with random_state=42; no variance across seeds was measured. The results reveal a clear inverted U-shaped curve. At α=0, the model correctly resists sycophantic pressure only 12.5% of the time (i.e., gives the correct answer despite the biased prompt). As α increases, this accuracy improves, reaching an optimum of 53.8% at α=20—a 41.3 percentage point improvement. Beyond α=20, performance degrades as excessive steering begins to disrupt the model's coherent generation, eventually producing nonsensical outputs at very high α values.
 
-![Steering Curve](Data/qwen3_0.6b/plots/03_steering_curve.png)
+![Steering Curve](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/03_steering_curve.png)
 
 ### 6.3 Intervention Results
 
 The dramatic improvement at optimal steering strength demonstrates that the learned probe direction is not merely correlated with sycophancy but causally influences the model's behavior. By subtracting the sycophancy direction, We effectively push the model's hidden states toward the "honest response" region of activation space.
 
-![Intervention Results](Data/qwen3_0.6b/plots/04_intervention_bars.png)
+![Intervention Results](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/04_intervention_bars.png)
 
 ## 7. Scaling to Larger Models
 
@@ -196,11 +196,11 @@ Linear probes achieved higher accuracy on larger models, suggesting that sycopha
 
 The optimal layer consistently falls in the upper-middle portion of the network (54-64% depth), aligning with prior findings that high-level semantic features crystallize in intermediate layers. The mean_response extraction method outperformed alternatives across all models.
 
-![Qwen3-4B Layer-wise Accuracy](Data/qwen3_4b/plots/02_layer_lines.png)
+![Qwen3-4B Layer-wise Accuracy](/Tensor-Slayer.github.io/Data/qwen3_4b/plots/02_layer_lines.png)
 
 The layer-wise accuracy curves for Qwen3-4B show a clear peak in the middle layers, with mean_response extraction achieving the highest accuracy. The pattern mirrors what is 'observed in the smaller model, suggesting a consistent computational structure for sycophancy across scales.
 
-![DeepSeek-R1-8B Layer-wise Accuracy](Data/deepseek_r1_8b/plots/02_layer_lines.png)
+![DeepSeek-R1-8B Layer-wise Accuracy](/Tensor-Slayer.github.io/Data/deepseek_r1_8b/plots/02_layer_lines.png)
 
 DeepSeek-R1-8B shows a similar but noisier pattern, with multiple local peaks across layers. The lower overall accuracy (73.1%) suggests that sycophancy may be more distributed or nonlinearly encoded in this architecture.
 
@@ -214,27 +214,27 @@ Activation steering successfully reduced sycophancy across all models tested, th
 | Qwen3-4B | 56.0% | 20 | 72.4% | +16.4 pp |
 | DeepSeek-R1-8B | 15.4% | 100 | 38.9% | +23.5 pp |
 
-![Qwen3-4B Steering Curve](Data/qwen3_4b/plots/03_steering_curve.png)
+![Qwen3-4B Steering Curve](/Tensor-Slayer.github.io/Data/qwen3_4b/plots/03_steering_curve.png)
 
 Qwen3-4B shows a sharp inverted-U response to steering strength. Performance peaks at α=20, then degrades rapidly—by α=75, accuracy has fallen below baseline. This sensitivity suggests that the sycophancy direction in larger Qwen models is tightly coupled with other important features, and aggressive steering disrupts coherent generation.
 
-![DeepSeek-R1-8B Steering Curve](Data/deepseek_r1_8b/plots/03_steering_curve.png)
+![DeepSeek-R1-8B Steering Curve](/Tensor-Slayer.github.io/Data/deepseek_r1_8b/plots/03_steering_curve.png)
 
 DeepSeek-R1-8B presents a strikingly different pattern. Performance improves monotonically up to α=100, with no degradation observed in the tested range. This model appears to tolerate—or even require—aggressive steering to overcome its sycophantic tendencies. The difference may reflect DeepSeek's reasoning-focused training, which could make the model more robust to activation perturbations.
 
-![Qwen3-4B Intervention Results](Data/qwen3_4b/plots/04_intervention_bars.png)
+![Qwen3-4B Intervention Results](/Tensor-Slayer.github.io/Data/qwen3_4b/plots/04_intervention_bars.png)
 
-![DeepSeek-R1-8B Intervention Results](Data/deepseek_r1_8b/plots/04_intervention_bars.png)
+![DeepSeek-R1-8B Intervention Results](/Tensor-Slayer.github.io/Data/deepseek_r1_8b/plots/04_intervention_bars.png)
 
 ### 7.5 Representation Analysis Across Models
 
 Visualizing the learned representations reveals how sycophancy is encoded differently across architectures.
 
-![Qwen3-4B PCA](Data/qwen3_4b/plots/15_pca_visualization.png)
+![Qwen3-4B PCA](/Tensor-Slayer.github.io/Data/qwen3_4b/plots/15_pca_visualization.png)
 
 The PCA projection for Qwen3-4B shows cleaner separation between sycophantic and non-sycophantic responses compared to the 0.6B model, consistent with the higher probe accuracy (88.4%). The two classes form more distinct clusters with less overlap.
 
-![DeepSeek-R1-8B PCA](Data/deepseek_r1_8b/plots/15_pca_visualization.png)
+![DeepSeek-R1-8B PCA](/Tensor-Slayer.github.io/Data/deepseek_r1_8b/plots/15_pca_visualization.png)
 
 DeepSeek-R1-8B shows substantial overlap in the PCA projection, explaining the lower probe accuracy. The sycophancy feature appears more entangled with other representations in this model.
 
@@ -248,9 +248,9 @@ Three patterns emerge from the scaling experiments:
 
 **Third**, optimal intervention parameters must be tuned per-model. The same steering strength (α=20) that optimally reduces sycophancy in Qwen models causes no improvement in DeepSeek, which requires α=100. Deploying activation steering in practice would require model-specific calibration.
 
-![Qwen3-4B Summary](Data/qwen3_4b/plots/09_summary.png)
+![Qwen3-4B Summary](/Tensor-Slayer.github.io/Data/qwen3_4b/plots/09_summary.png)
 
-![DeepSeek-R1-8B Summary](Data/deepseek_r1_8b/plots/09_summary.png)
+![DeepSeek-R1-8B Summary](/Tensor-Slayer.github.io/Data/deepseek_r1_8b/plots/09_summary.png)
 
 ## 8. Discussion
 
@@ -258,7 +258,7 @@ Three patterns emerge from the scaling experiments:
 
 These findings demonstrate that sycophancy in Qwen3-0.6B is detectable via linear probing with 73.5% accuracy, is most accessible in middle layers (12-16) using mean response activations, is concentrated in approximately 18% of neurons at the optimal layer, and can be reduced by 41.3 percentage points through activation steering at the optimal strength. Scaling experiments on Qwen3-4B and DeepSeek-R1-8B confirm that this approach generalizes across model sizes and architectures, with larger models showing even higher probe accuracy (up to 88.4%).
 
-![Summary](Data/qwen3_0.6b/plots/09_summary.png)
+![Summary](/Tensor-Slayer.github.io/Data/qwen3_0.6b/plots/09_summary.png)
 
 ### 8.2 Limitations
 

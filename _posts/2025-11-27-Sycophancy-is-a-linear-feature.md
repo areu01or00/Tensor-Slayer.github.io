@@ -1,3 +1,12 @@
+---
+layout: post
+title: "Sycophancy In Language Models: How to Investigate and Suppress Without Training"
+date: 2025-11-27
+categories: ai research interpretability
+author: "Tensor-Slayer"
+excerpt: "Investigating whether sycophancy is encoded as a linear direction in transformer hidden states, and using activation steering to reduce sycophantic behavior without retraining."
+---
+
 # Sycophancy In Language Models : How to Investigate and Supress Without Training
 
 ## Preface

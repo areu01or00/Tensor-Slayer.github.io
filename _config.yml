@@ -17,6 +17,7 @@ plugins:
 # Build settings
 markdown: kramdown
 highlighter: rouge
+future: true
 
 # Social media (optional - can be left empty)
 github_username: areu01or00

@@ -321,7 +321,7 @@ This work provides evidence that sycophancy—the tendency of language models to
 | Qwen3-4B | 116 | 56.0% | 20 | 72.4% | +16.4 pp |
 | DeepSeek-R1-8B | 285 | 15.4% | 100 | 38.9% | +23.5 pp |
 
-**LLM Judge:** anthropic/claude-3-haiku via OpenRouter
+**LLM Judge:** qwen/qwen3-coder via OpenRouter
 
 **Code and Data:** [Syco-Sup](https://github.com/areu01or00/Syco-Sup)
 

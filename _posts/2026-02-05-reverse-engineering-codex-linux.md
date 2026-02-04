@@ -302,5 +302,3 @@ If you're stuck with a "macOS-only" Electron app:
 4. **Categorize native modules**: rebuild cross-platform ones, stub macOS-only ones
 5. **Match the Electron version exactly** for ABI compatibility
 6. **Override the renderer URL** if it expects a dev server
-
-

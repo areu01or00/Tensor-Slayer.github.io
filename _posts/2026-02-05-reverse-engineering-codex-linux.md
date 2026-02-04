@@ -307,6 +307,6 @@ The walls are shorter than they look.
 
 ---
 
-*For the full technical breakdown with hex dumps and memory layouts, see [PORTING-GUIDE.md](https://github.com/areu01or00/codex-linux-port/blob/main/PORTING-GUIDE.md).*
+*For the full technical breakdown with hex dumps and memory layouts, check the repo link above*
 
 *For personal and educational use. Not affiliated with OpenAI.*

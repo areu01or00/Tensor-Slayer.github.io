@@ -8,7 +8,7 @@ This blog documents my research into AI-guided model enhancement through direct 
 
 ## Recent Posts
 
-- [Reverse Engineering OpenAI's Codex App for Linux](reverse-engineering/electron/linux/2026/02/05/reverse-engineering-codex-linux.html) - OpenAI said Mac only. I disagreed. Here's how I cracked open their Electron app and made it run on Linux.
+- [Reverse Engineering OpenAI's Codex App for Linux](reverse-engineering/electron/linux/2026/02/05/reverse-engineering-codex-linux.html) - OpenAI said Codex App is Mac only. I disagreed.
 
 - [Sycophancy In Language Models: How to Investigate and Suppress Without Training](ai/research/interpretability/2025/11/27/Sycophancy-is-a-linear-feature.html) - Investigating whether sycophancy is encoded as a linear direction in transformer hidden states.
 

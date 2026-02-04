@@ -6,7 +6,7 @@ categories: reverse-engineering electron linux
 excerpt: "OpenAI said Mac only. I disagreed. Here's how I cracked open their Electron app and made it run on Linux."
 ---
 
-![Codex running on Linux](/Data/codex-linux/codex-linux-screenshot.png)
+![Codex running on Linux](https://areu01or00.github.io/Tensor-Slayer.github.io/Data/codex-linux/codex-linux-screenshot.png)
 
 *OpenAI released Mac only Codex App. I was eager to test it on Linux.*
 

@@ -2,8 +2,8 @@ title: "Tensor Slayer Research"
 description: "AI-Guided Model Enhancement Through Direct Tensor Manipulation"
 author: "Tensor-Slayer"
 email: ""
-url: "https://areu01or00.github.io/Tensor-Slayer.github.io"
-baseurl: ""
+url: "https://areu01or00.github.io"
+baseurl: "/Tensor-Slayer.github.io"
 
 # Theme
 remote_theme: pages-themes/architect@v0.2.0

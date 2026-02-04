@@ -8,7 +8,9 @@ excerpt: "OpenAI said Mac only. I disagreed. Here's how I cracked open their Ele
 
 ![Codex running on Linux](https://areu01or00.github.io/Tensor-Slayer.github.io/Data/codex-linux/codex-linux-screenshot.png)
 
-*OpenAI released Mac only Codex App. I was eager to test it on Linux.*
+## OpenAI released Mac only Codex App. I was eager to test it on Linux.
+
+** Blog vibe drafted by Slopus**
 
 ---
 
@@ -301,12 +303,4 @@ If you're stuck with a "macOS-only" Electron app:
 5. **Match the Electron version exactly** for ABI compatibility
 6. **Override the renderer URL** if it expects a dev server
 
-Not every Electron app will be this clean. Some have more native dependencies, code signing checks, or platform-specific logic baked into the JavaScript. But many don't.
 
-The walls are shorter than they look.
-
----
-
-*For the full technical breakdown with hex dumps and memory layouts, check the repo link above*
-
-*For personal and educational use. Not affiliated with OpenAI.*

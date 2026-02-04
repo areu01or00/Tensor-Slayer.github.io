@@ -1,61 +1,69 @@
 ---
 ---
-@import "{{ site.theme }}";
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap");
 
+:root {
+  color-scheme: light;
+  --bg: #f7f7f5;
+  --ink: #121212;
+  --muted: #4b4b4b;
+  --line: #e3e3e0;
+  --accent: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: "IBM Plex Mono", "Courier New", monospace;
-  color: #111;
-  background: #fafafa;
+  color: var(--ink);
+  background: var(--bg);
 }
 
-.page-header {
-  display: none;
+a {
+  color: inherit;
 }
 
-.main-content {
+.site {
   max-width: 900px;
-  padding-top: 2rem;
-}
-
-.index-shell {
-  display: grid;
-  gap: 1.5rem;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
 }
 
 .hero {
-  border: 1px solid #e2e2e2;
+  border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 1.2rem 1.4rem;
+  padding: 20px 22px;
   background: #fff;
 }
 
 .hero h1 {
-  font-size: 2rem;
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 6px 0;
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
 }
 
 .hero p {
   margin: 0;
-  color: #333;
+  color: var(--muted);
   line-height: 1.6;
+}
+
+.project-link {
+  margin-top: 12px;
 }
 
 .project-link a {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.8rem;
-  padding: 0.35rem 0.6rem;
-  border: 1px solid #d0d0d0;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
   border-radius: 6px;
   text-decoration: none;
-  color: #111;
-  background: #f6f6f6;
-}
-
-.project-link a:hover {
-  text-decoration: underline;
+  background: #f0f0ed;
 }
 
 .project-link svg {
@@ -65,76 +73,92 @@ body {
 }
 
 .section-title {
-  font-size: 0.9rem;
+  margin: 24px 0 10px 0;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0 0 0.6rem 0;
-  color: #444;
+  letter-spacing: 0.18em;
+  color: var(--muted);
 }
 
 .posts-grid {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: grid;
-  gap: 0.8rem;
+  gap: 12px;
 }
 
 .post-card {
-  border: 1px solid #e2e2e2;
+  border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 0.9rem 1rem;
+  padding: 14px 16px;
   background: #fff;
 }
 
 .post-card a {
   text-decoration: none;
-  color: #111;
   font-weight: 600;
 }
 
-.post-card a:hover {
-  text-decoration: underline;
-}
-
 .post-meta {
+  margin-top: 6px;
+  color: var(--muted);
   font-size: 0.85rem;
-  color: #555;
-  margin-top: 0.3rem;
 }
 
 .post-excerpt {
-  color: #444;
-  margin-top: 0.5rem;
+  margin-top: 8px;
+  color: var(--muted);
   line-height: 1.6;
 }
 
 .callout {
-  border-left: 3px solid #111;
-  padding: 0.6rem 0.9rem;
-  background: #f3f3f3;
-  color: #333;
+  margin-top: 18px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: #efefec;
+  color: var(--muted);
 }
 
-.post-index-nav {
-  margin: 0 0 1.5rem 0;
+.post-nav {
+  margin-bottom: 18px;
 }
 
-.post-index-link {
+.post-nav a {
   display: inline-block;
-  padding: 0.35rem 0.7rem;
-  border: 1px solid #d0d0d0;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
   border-radius: 6px;
   text-decoration: none;
-  font-size: 0.95rem;
-  color: #111;
+  background: #f0f0ed;
 }
 
-.post-index-link:hover {
-  text-decoration: underline;
+article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 22px;
 }
 
-img {
+article h1,
+article h2,
+article h3 {
+  letter-spacing: -0.01em;
+}
+
+article img {
   max-width: 100%;
   height: auto;
+}
+
+pre,
+code {
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+}
+
+pre {
+  background: #f1f1ee;
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
 }

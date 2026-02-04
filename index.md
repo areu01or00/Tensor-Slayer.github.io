@@ -2,9 +2,9 @@
 layout: home
 ---
 
-# Welcome to Tensor Slayer Research
+# Welcome to Tensor Slayer's Blog
 
-This blog documents my research into AI-guided model enhancement through direct tensor manipulation. Here, I share findings, tools, and insights from exploring alternative approaches to improving language models without traditional training methods.
+Thoughts = Projects. mostly left half assed soon after attaining first dopamine hit.
 
 ## Recent Posts
 

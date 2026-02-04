@@ -67,7 +67,7 @@ The AI system then analyzes this information and provides:
 
 ## Case Study: Qwen-0.6B Enhancement
 
-<img width="1000" height="600" alt="model_comparison_plot" src="https://github.com/user-attachments/assets/fc704156-6e0d-42ba-9d53-b492de346b67" />
+![Model comparison plot](https://github.com/user-attachments/assets/fc704156-6e0d-42ba-9d53-b492de346b67)
 
 
 ### The Analysis Target
@@ -310,12 +310,8 @@ The Tensor Slayer framework represents an early exploration of AI-guided model e
 To replicate the Qwen-0.6B enhancement:
 
 ```bash
-
 # Download base model
 huggingface-cli download Qwen/Qwen-0.6B --local-dir ./Qwen_0.6B
-
-#Download the Qwen Hex patch
-https://github.com/areu01or00/Tensor-Slayer.github.io/blob/main/apply_qwen_patches_simple.sh
 
 # Apply AI-recommended enhancements
 cd Qwen_0.6B
@@ -328,4 +324,8 @@ python safetensors_diff_analyzer.py compare Qwen_0.6B/model.safetensors Qwen_0.6
 
 The enhancement script automatically applies all 44 AI-recommended modifications and creates backups for easy restoration.
 
-## Evals : https://github.com/areu01or00/Tensor-Slayer/tree/main/Evals
+Download the patch script:
+[apply_qwen_patches_simple.sh](https://github.com/areu01or00/Tensor-Slayer.github.io/blob/main/apply_qwen_patches_simple.sh)
+
+## Evals
+[Tensor-Slayer Evals](https://github.com/areu01or00/Tensor-Slayer/tree/main/Evals)

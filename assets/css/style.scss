@@ -1,0 +1,25 @@
+---
+---
+@import "{{ site.theme }}";
+
+.post-index-nav {
+  margin: 0 0 1.5rem 0;
+}
+
+.post-index-link {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.post-index-link:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

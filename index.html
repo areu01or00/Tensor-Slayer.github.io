@@ -1,127 +1,23 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tensor Slayer</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f7f7f5;
-        --ink: #121212;
-        --muted: #4b4b4b;
-        --line: #e3e3e0;
-        --accent: #111;
-      }
+---
+layout: default
+---
 
-      * {
-        box-sizing: border-box;
-      }
+<section class="hero">
+  <h1>Tensor Slayer</h1>
+  <p>Practical experiments in model behavior, interpretability, and binary-level interventions. Built for fast iteration and clear reporting.</p>
+</section>
 
-      body {
-        margin: 0;
-        font-family: "IBM Plex Mono", "Courier New", monospace;
-        color: var(--ink);
-        background: var(--bg);
-      }
+<div class="section-title">Recent posts</div>
+<ul class="posts">
+  {% for post in site.posts %}
+  <li class="post">
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+    <div class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines }}</div>
+  </li>
+  {% endfor %}
+</ul>
 
-      .site {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 32px 20px 64px;
-      }
-
-      h1 {
-        margin: 0 0 6px 0;
-        font-size: 2.1rem;
-        letter-spacing: -0.02em;
-      }
-
-      p {
-        margin: 0 0 16px 0;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .hero {
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 20px 22px;
-        background: #fff;
-        margin-bottom: 24px;
-      }
-
-      .section-title {
-        margin: 24px 0 10px 0;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: var(--muted);
-      }
-
-      .posts {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 12px;
-      }
-
-      .post {
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 14px 16px;
-        background: #fff;
-      }
-
-      .post a {
-        text-decoration: none;
-        font-weight: 600;
-        color: var(--ink);
-      }
-
-      .post-meta {
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 0.85rem;
-      }
-
-      .post-excerpt {
-        margin-top: 8px;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .callout {
-        margin-top: 18px;
-        padding: 10px 12px;
-        border-left: 3px solid var(--accent);
-        background: #efefec;
-        color: var(--muted);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="site">
-      <section class="hero">
-        <h1>Tensor Slayer</h1>
-        <p>Practical experiments in model behavior, interpretability, and binary-level interventions. Built for fast iteration and clear reporting.</p>
-      </section>
-
-      <div class="section-title">Recent posts</div>
-      <ul class="posts">
-        {% for post in site.posts %}
-        <li class="post">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
-          <div class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines }}</div>
-        </li>
-        {% endfor %}
-      </ul>
-
-      <div class="callout">
-        Thoughts = Projects. mostly left half assed soon after attaining first dopamine hit.
-      </div>
-    </div>
-  </body>
-</html>
+<div class="callout">
+  Thoughts = Projects. mostly left half assed soon after attaining first dopamine hit.
+</div>
